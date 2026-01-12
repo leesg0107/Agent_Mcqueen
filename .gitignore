@@ -30,3 +30,7 @@ tensorboard/
 
 # Large model files (already tracked, but exclude future large files)
 # Note: We're keeping existing .pth, .zip, .pkl files per user preference
+
+# Generated documentation
+simulators/f1tenth_gym/docs/html/
+simulators/f1tenth_gym/docs/latex/
