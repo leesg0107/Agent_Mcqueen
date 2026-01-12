@@ -1,0 +1,7 @@
+# Exclude documentation and generated files from language statistics
+simulators/f1tenth_gym/docs/** linguist-documentation
+*.md linguist-documentation
+docs/** linguist-documentation
+
+# Mark specific directories as vendored (third-party code)
+simulators/f1tenth_gym/** linguist-vendored
