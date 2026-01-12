@@ -10,7 +10,7 @@
 
 | Stage 1: Single Agent | Stage 2: Overtaking |
 |:---------------------:|:-------------------:|
-| https://github.com/user-attachments/assets/ab8db412-77f6-4daa-884c-11d03753b5b9 | https://github.com/user-attachments/assets/3bfaabe3-2da9-47ad-afa7-457bf9c9a8fe |
+| <video src="https://github.com/user-attachments/assets/ab8db412-77f6-4daa-884c-11d03753b5b9" width="100%"/> | <video src="https://github.com/user-attachments/assets/3bfaabe3-2da9-47ad-afa7-457bf9c9a8fe" width="100%"/> |
 | Agent navigating with LiDAR visualization | Overtaking maneuver with both agents visible in RViz |
 
 ### ForzaETH Race Stack
@@ -19,7 +19,7 @@
 
 | Stage 1: Single Agent | Stage 2: Overtaking |
 |:---------------------:|:-------------------:|
-| https://github.com/user-attachments/assets/445f2bf3-6635-490e-8b37-b70e3781df27 | https://github.com/user-attachments/assets/4a10aa38-5c20-4f5a-b40c-bacd437ee932 |
+| <video src="https://github.com/user-attachments/assets/445f2bf3-6635-490e-8b37-b70e3781df27" width="100%"/> | <video src="https://github.com/user-attachments/assets/4a10aa38-5c20-4f5a-b40c-bacd437ee932" width="100%"/> |
 | Agent navigating the ForzaETH hall map | Overtaking behavior in high-fidelity physics simulation |
 
 ## Overview
