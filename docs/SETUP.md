@@ -2,25 +2,31 @@
 
 This guide explains how to run Agent McQueen in both F1TENTH Gym and ForzaETH simulators.
 
-## 1. Docker Volume Configuration
+## Prerequisites
 
-Add the following volumes to your `dkrun.sh` (adjust paths to match your environment):
+The Docker image (`Dockerfile_misys_forza_full.desktop`) automatically installs:
+- ROS2 Humble
+- F1TENTH Gym ROS2 bridge (`f1tenth_ws`)
+- ForzaETH Race Stack (`forza_ws`)
+- All required dependencies
 
+## Docker Setup
+
+1. **Build the Docker image** (first time only):
 ```bash
-# Mount with original Docker paths to avoid code changes
---volume=/home/$USER/YOUR_PATH/Agent_MCqueen/ros2_workspace:/home/misys/AgentMcqueen_ws:rw
---volume=/home/$USER/YOUR_PATH/Agent_MCqueen/training:/home/misys/overtake_agent:rw
---volume=/home/$USER/YOUR_PATH/Agent_MCqueen/simulators/f1tenth_gym:/home/misys/f1tenth_gym:rw
+cd Agent_Mcqueen
+docker build -f Dockerfile_misys_forza_full.desktop -t misys:forza_full .
 ```
 
-**Important**: We mount the new host folders (`ros2_workspace`, `training`) to the **original Docker paths** (`AgentMcqueen_ws`, `overtake_agent`) so that all existing configuration files and code work without any modification.
-
-## 2. Docker Build and Run
-
+2. **Run the container**:
 ```bash
-docker build -f Dockerfile_misys_forza_full.desktop -t misys:forza_full .
 ./dkrun.sh misys:forza_full
 ```
+
+The `dkrun.sh` script automatically mounts:
+- `ros2_workspace` → `/home/misys/AgentMcqueen_ws`
+- `training` → `/home/misys/overtake_agent`
+- `simulators/f1tenth_gym` → `/home/misys/f1tenth_gym`
 
 ---
 

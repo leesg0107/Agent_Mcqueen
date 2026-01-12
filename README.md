@@ -42,35 +42,44 @@ Supports both F1TENTH Gym and ForzaETH Race Stack simulators.
 
 ## Prerequisites
 
-- Docker environment with ForzaETH setup
-- ROS2 Humble
-- Python 3.8+ with stable-baselines3
+- Docker with NVIDIA GPU support
+- NVIDIA drivers installed on host
 
 ## Setup
 
-### 1. Docker Configuration
-
-Add volume mounts to your `dkrun.sh`:
+### 1. Clone Repository
 
 ```bash
-# Mount with original Docker paths to avoid code changes
---volume=/home/$USER/YOUR_PATH/Agent_MCqueen/ros2_workspace:/home/misys/AgentMcqueen_ws:rw
---volume=/home/$USER/YOUR_PATH/Agent_MCqueen/training:/home/misys/overtake_agent:rw
---volume=/home/$USER/YOUR_PATH/Agent_MCqueen/simulators/f1tenth_gym:/home/misys/f1tenth_gym:rw
+git clone https://github.com/YOUR_USERNAME/Agent_Mcqueen.git
+cd Agent_Mcqueen
 ```
 
-**Note**: We mount the new host folders (`ros2_workspace`, `training`) to the original Docker paths (`AgentMcqueen_ws`, `overtake_agent`) so that all existing code works without modification.
-
-Build and run Docker:
+### 2. Build Docker Image
 
 ```bash
 docker build -f Dockerfile_misys_forza_full.desktop -t misys:forza_full .
+```
+
+This will automatically install:
+- ROS2 Humble
+- F1TENTH Gym ROS2 bridge (`f1tenth_ws`)
+- ForzaETH Race Stack (`forza_ws`)
+- All required dependencies
+
+### 3. Run Docker Container
+
+```bash
 ./dkrun.sh misys:forza_full
 ```
 
-### 2. Running Agents
+The container will mount:
+- `simulators/f1tenth_gym` → `/home/misys/f1tenth_gym`
+- `ros2_workspace` → `/home/misys/AgentMcqueen_ws`
+- `training` → `/home/misys/overtake_agent`
 
-See [docs/SETUP.md](docs/SETUP.md) for complete setup instructions.
+### 4. Inside Container - Initial Setup
+
+See [docs/SETUP.md](docs/SETUP.md) for complete instructions.
 
 ## Quick Start - F1TENTH Gym
 
