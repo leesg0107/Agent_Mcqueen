@@ -1,0 +1,6 @@
+image: map444.pgm
+resolution: 0.062500
+origin: [-52.6140888235479,-48.65017843345723, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

@@ -1,0 +1,6 @@
+image: map392.pgm
+resolution: 0.062500
+origin: [-58.14178477819996,-47.508541005279426, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

@@ -1,0 +1,6 @@
+image: map365.pgm
+resolution: 0.062500
+origin: [-78.16266070988002,-44.099859643830264, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

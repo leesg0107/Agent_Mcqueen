@@ -1,0 +1,6 @@
+image: map342.pgm
+resolution: 0.062500
+origin: [-78.29294969122176,-44.06526830727326, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

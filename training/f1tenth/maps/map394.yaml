@@ -1,0 +1,6 @@
+image: map394.pgm
+resolution: 0.062500
+origin: [-77.83396831806098,-44.051637417855716, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

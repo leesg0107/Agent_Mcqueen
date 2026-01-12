@@ -1,0 +1,6 @@
+image: map350.pgm
+resolution: 0.062500
+origin: [-77.9906119291602,-44.19293973252719, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

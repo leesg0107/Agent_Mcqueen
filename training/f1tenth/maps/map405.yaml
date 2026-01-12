@@ -1,0 +1,6 @@
+image: map405.pgm
+resolution: 0.062500
+origin: [-55.30129855925959,-48.13790702337826, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

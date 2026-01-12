@@ -1,1 +1,191 @@
-# Agent_Mcqueen
+# Agent McQueen - Autonomous Racing with Overtaking
+
+> Reinforcement learning agent for autonomous racing and overtaking in F1TENTH environments.
+
+## Demo Videos
+
+### F1TENTH Gym Simulator
+
+**Simulation Environment (Python-based, fast iteration)**
+
+| Stage 1: Single Agent | Stage 2: Overtaking |
+|:---------------------:|:-------------------:|
+| <video src="https://github.com/user-attachments/assets/f1tenth-gym_stage1.mp4" width="100%"/> | <video src="https://github.com/user-attachments/assets/f1tenth-gym_stage2.MOV" width="100%"/> |
+| Single agent navigating the track using PPO-trained policy | Two agents racing - the faster agent overtakes the slower expert |
+
+### F1TENTH Physical Simulator
+
+**Real-world visualization (ROS2 + RViz)**
+
+| Stage 1: Single Agent | Stage 2: Overtaking |
+|:---------------------:|:-------------------:|
+| <video src="https://github.com/user-attachments/assets/f1tenth_stage1.mp4" width="100%"/> | <video src="https://github.com/user-attachments/assets/f1tenth_stage2.mp4" width="100%"/> |
+| Agent navigating with LiDAR visualization | Overtaking maneuver with both agents visible in RViz |
+
+### ForzaETH Race Stack
+
+**High-fidelity simulator**
+
+| Stage 1: Single Agent | Stage 2: Overtaking |
+|:---------------------:|:-------------------:|
+| <video src="https://github.com/user-attachments/assets/forza_stage1.mp4" width="100%"/> | <video src="https://github.com/user-attachments/assets/forza_stage2.mp4" width="100%"/> |
+| Agent navigating the ForzaETH hall map | Overtaking behavior in high-fidelity physics simulation |
+
+## Overview
+
+Agent McQueen implements a two-stage reinforcement learning system:
+
+- **Stage 1**: Single-agent learns fast track navigation using PPO
+- **Stage 2**: Multi-agent overtaking using residual learning
+
+Supports both F1TENTH Gym and ForzaETH Race Stack simulators.
+
+## Repository Structure
+
+| Directory                                       | Description                                           |
+| ----------------------------------------------- | ----------------------------------------------------- |
+| [docs/](docs/)                                     | Setup guide, architecture, and training documentation |
+| [ros2_workspace/](ros2_workspace/)                 | ROS2 integration package for both simulators          |
+| [training/](training/)                             | Training scripts, models, and wrappers                |
+| [simulators/f1tenth_gym/](simulators/f1tenth_gym/) | F1TENTH Gym simulator                                 |
+
+## Prerequisites
+
+- Docker environment with ForzaETH setup
+- ROS2 Humble
+- Python 3.8+ with stable-baselines3
+
+## Setup
+
+### 1. Docker Configuration
+
+Add volume mounts to your `dkrun.sh`:
+
+```bash
+# Mount with original Docker paths to avoid code changes
+--volume=/home/$USER/YOUR_PATH/Agent_MCqueen/ros2_workspace:/home/misys/AgentMcqueen_ws:rw
+--volume=/home/$USER/YOUR_PATH/Agent_MCqueen/training:/home/misys/overtake_agent:rw
+--volume=/home/$USER/YOUR_PATH/Agent_MCqueen/simulators/f1tenth_gym:/home/misys/f1tenth_gym:rw
+```
+
+**Note**: We mount the new host folders (`ros2_workspace`, `training`) to the original Docker paths (`AgentMcqueen_ws`, `overtake_agent`) so that all existing code works without modification.
+
+Build and run Docker:
+
+```bash
+docker build -f Dockerfile_misys_forza_full.desktop -t misys:forza_full .
+./dkrun.sh misys:forza_full
+```
+
+### 2. Running Agents
+
+See [docs/SETUP.md](docs/SETUP.md) for complete setup instructions.
+
+## Quick Start - F1TENTH Gym
+
+**Note**: Do NOT source forza_ws when using F1TENTH Gym.
+
+### Initial Setup (One-time)
+
+```bash
+source /opt/ros/humble/setup.bash
+
+cd /home/misys/f1tenth_ws
+rm -rf build/f1tenth_gym_ros install/f1tenth_gym_ros
+colcon build --packages-select f1tenth_gym_ros
+
+cd /home/misys/AgentMcqueen_ws
+rm -rf build install log
+colcon build --packages-select agent_mcqueen
+
+pip install stable_baselines3
+```
+
+### Stage 1 (Single Agent)
+
+```bash
+source /home/misys/f1tenth_ws/install/setup.bash
+source /home/misys/AgentMcqueen_ws/install/setup.bash
+ros2 launch agent_mcqueen sim_stage1_launch.py
+```
+
+### Overtake (Two Agents)
+
+```bash
+source /home/misys/f1tenth_ws/install/setup.bash
+source /home/misys/AgentMcqueen_ws/install/setup.bash
+ros2 launch agent_mcqueen sim_overtake_launch.py
+```
+
+## Quick Start - ForzaETH Race Stack
+
+**Note**: MUST source forza_ws when using ForzaETH.
+
+### Initial Setup (One-time)
+
+See [docs/SETUP.md](docs/SETUP.md) for complete ForzaETH setup including sim_single.yaml creation.
+
+### Stage 1
+
+```bash
+source /home/misys/f1tenth_ws/install/setup.bash
+source /home/misys/forza_ws/race_stack/install/setup.bash
+source /home/misys/AgentMcqueen_ws/install/setup.bash
+ros2 launch agent_mcqueen forza_stage1_launch.py map_name:=hall
+```
+
+### Overtake
+
+```bash
+source /home/misys/f1tenth_ws/install/setup.bash
+source /home/misys/forza_ws/race_stack/install/setup.bash
+source /home/misys/AgentMcqueen_ws/install/setup.bash
+ros2 launch agent_mcqueen forza_overtake_launch.py map_name:=hall
+```
+
+## Available Maps
+
+| Simulator   | Maps                                                                                        |
+| ----------- | ------------------------------------------------------------------------------------------- |
+| F1TENTH Gym | `map0` (default)                                                                          |
+| ForzaETH    | `hall`, `GLC_smile_small`, `small_hall`, `teras`, `glc_ot_ez`, `hangar_1905_v0` |
+
+## Important Notes
+
+1. **Switching simulators requires rebuild** - `f1tenth_gym_ros` conflicts between F1TENTH and ForzaETH
+2. **Container restart** requires `pip install stable_baselines3` again
+3. **F1TENTH Gym**: Do NOT source `forza_ws`
+4. **ForzaETH**: MUST source `forza_ws`
+
+## Troubleshooting
+
+| Issue                                      | Cause                      | Solution                          |
+| ------------------------------------------ | -------------------------- | --------------------------------- |
+| `gym_bridge` error                       | Wrong f1tenth_gym_ros      | Re-run setup for that option      |
+| `ModuleNotFoundError: stable_baselines3` | Missing pip package        | `pip install stable_baselines3` |
+| Map not visible (F1TENTH)                  | RViz Fixed Frame           | Set to `sim`                    |
+| Map not visible (ForzaETH)                 | RViz Fixed Frame           | Set to `map`                    |
+| Agent not moving                           | Topic mismatch             | Check config files                |
+| ForzaETH Stage1 shows 2 agents             | sim_single.yaml wrong path | Recreate in INSTALL directory     |
+
+## Documentation
+
+- [Setup Guide](docs/SETUP.md) - Detailed setup for both simulators
+- [Architecture](docs/ARCHITECTURE.md) - ROS2 topics, observation processing
+- [Training Guide](docs/TRAINING.md) - Residual learning methodology
+
+## Features
+
+- Pre-trained models included
+- 1,362 track maps for training and testing
+- Dual-simulator support (F1TENTH Gym + ForzaETH)
+- GPU auto-detection (falls back to CPU)
+
+## Acknowledgments
+
+- [F1TENTH Gym](https://github.com/f1tenth/f1tenth_gym) - Simulation environment
+- ForzaETH Race Stack - High-fidelity simulator
+- [Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3) - RL library
+
+
+## Contacts

@@ -1,0 +1,6 @@
+image: map210.pgm
+resolution: 0.062500
+origin: [-78.08401456983611,-44.04288228377639, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

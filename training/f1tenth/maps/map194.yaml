@@ -1,0 +1,6 @@
+image: map194.pgm
+resolution: 0.062500
+origin: [-78.17934859184345,-44.39964910574492, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

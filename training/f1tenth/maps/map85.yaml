@@ -1,0 +1,6 @@
+image: map85.pgm
+resolution: 0.062500
+origin: [-78.10467649388858,-44.078247480496536, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

@@ -1,0 +1,6 @@
+image: map157.pgm
+resolution: 0.062500
+origin: [-51.08355489780965,-48.92708331186799, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

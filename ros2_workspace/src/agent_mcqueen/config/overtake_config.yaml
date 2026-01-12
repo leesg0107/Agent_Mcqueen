@@ -1,0 +1,26 @@
+# Overtake Agent Configuration (2 Agents)
+# Node runs under /sim namespace, so use /sim/overtake_agent
+/sim/overtake_agent:
+  ros__parameters:
+    # Model path (in docker container)
+    model_path: '/home/misys/overtake_agent/common/models/overtake_final.pth'
+
+    # ROS2 topics - Ego (Agent 0)
+    ego_scan_topic: '/sim/scan'
+    ego_odom_topic: '/sim/ego_racecar/odom'
+    ego_drive_topic: '/sim/drive'
+
+    # ROS2 topics - Opponent (Agent 1)
+    opp_scan_topic: '/sim/opp_scan'
+    opp_odom_topic: '/sim/opp_racecar/odom'
+    opp_drive_topic: '/sim/opp_drive'
+
+    # Observation parameters
+    num_beams: 1080
+    frame_stack: 4
+
+    # Agent 0 handicap (80% speed)
+    agent0_speed_factor: 0.8
+
+    # Device (cuda or cpu)
+    device: 'cuda'

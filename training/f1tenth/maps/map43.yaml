@@ -1,0 +1,6 @@
+image: map43.pgm
+resolution: 0.062500
+origin: [-77.95967215611543,-44.10420617294717, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

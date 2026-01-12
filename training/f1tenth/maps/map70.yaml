@@ -1,0 +1,6 @@
+image: map70.pgm
+resolution: 0.062500
+origin: [-59.45276530869403,-47.3032654684719, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

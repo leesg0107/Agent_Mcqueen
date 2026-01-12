@@ -1,0 +1,6 @@
+image: map288.pgm
+resolution: 0.062500
+origin: [-55.59647050739518,-48.1983437396222, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

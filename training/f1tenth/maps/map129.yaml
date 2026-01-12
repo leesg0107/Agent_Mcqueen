@@ -1,0 +1,6 @@
+image: map129.pgm
+resolution: 0.062500
+origin: [-78.27856433175003,-44.158433903450835, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

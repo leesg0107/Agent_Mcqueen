@@ -1,0 +1,6 @@
+image: map337.pgm
+resolution: 0.062500
+origin: [-55.38141385066612,-48.07384222852196, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

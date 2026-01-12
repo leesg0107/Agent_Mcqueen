@@ -1,0 +1,41 @@
+# F1Tenth Gym ROS2 Config for Overtake (Two Agents)
+# Map path uses overtake_agent maps (mounted in docker)
+
+/sim/bridge:
+  ros__parameters:
+    # Topics
+    ego_namespace: 'ego_racecar'
+    ego_scan_topic: 'scan'
+    ego_odom_topic: 'odom'
+    ego_opp_odom_topic: 'opp_odom'
+    ego_drive_topic: 'drive'
+    opp_namespace: 'opp_racecar'
+    opp_scan_topic: 'opp_scan'
+    opp_odom_topic: 'odom'
+    opp_ego_odom_topic: 'ego_odom'
+    opp_drive_topic: 'opp_drive'
+
+    # LiDAR parameters
+    scan_distance_to_base_link: 0.0
+    scan_fov: 4.7
+    scan_beams: 1080
+
+    # Map - using overtake_agent maps
+    map_path: '/home/misys/overtake_agent/f1tenth/maps/map0'
+    map_img_ext: '.pgm'
+
+    # Two agents
+    num_agent: 2
+
+    # Agent 0 (ego) - Stage 1 frozen expert, starts AHEAD, 80% speed
+    # stheta ≈ π means facing -x direction, so lower x = AHEAD
+    sx: 0.2663860
+    sy: 0.0380757
+    stheta: 3.208718
+
+    # Agent 1 (opp) - Overtake learner, starts BEHIND, 100% speed
+    sx1: 10.2663860
+    sy1: 0.0380757
+    stheta1: 3.208718
+
+    kb_teleop: False

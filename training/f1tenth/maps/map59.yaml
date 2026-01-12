@@ -1,0 +1,6 @@
+image: map59.pgm
+resolution: 0.062500
+origin: [-77.89948278882093,-44.16205555447967, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

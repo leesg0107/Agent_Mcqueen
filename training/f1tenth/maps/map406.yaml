@@ -1,0 +1,6 @@
+image: map406.pgm
+resolution: 0.062500
+origin: [-78.00488473441906,-43.9864515993803, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

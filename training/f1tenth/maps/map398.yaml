@@ -1,0 +1,6 @@
+image: map398.pgm
+resolution: 0.062500
+origin: [-78.10628959839408,-44.0176038142896, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

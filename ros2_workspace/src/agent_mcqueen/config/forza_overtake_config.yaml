@@ -1,0 +1,25 @@
+# Overtake Agent Configuration for ForzaETH (2 Agents)
+/overtake_agent:
+  ros__parameters:
+    # Model path (in docker container)
+    model_path: '/home/misys/overtake_agent/common/models/overtake_final.pth'
+
+    # ROS2 topics - Ego (Agent 0) - ForzaETH naming
+    ego_scan_topic: '/scan'
+    ego_odom_topic: '/car_state/odom_GT'
+    ego_drive_topic: '/drive'
+
+    # ROS2 topics - Opponent (Agent 1)
+    opp_scan_topic: '/opp_scan'
+    opp_odom_topic: '/opp_racecar/odom'
+    opp_drive_topic: '/opp_drive'
+
+    # Observation parameters
+    num_beams: 1080
+    frame_stack: 4
+
+    # Agent 0 handicap (80% speed)
+    agent0_speed_factor: 0.8
+
+    # Device (cuda or cpu)
+    device: 'cuda'

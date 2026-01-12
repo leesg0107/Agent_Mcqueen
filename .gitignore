@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build_py/
+
+# ROS2
+ros2_workspace/build/
+ros2_workspace/install/
+ros2_workspace/log/
+
+# macOS
+.DS_Store
+*.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Training logs (optional)
+wandb/
+tensorboard/
+*.log
+
+# Large model files (already tracked, but exclude future large files)
+# Note: We're keeping existing .pth, .zip, .pkl files per user preference

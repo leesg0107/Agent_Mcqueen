@@ -1,0 +1,6 @@
+image: map289.pgm
+resolution: 0.062500
+origin: [-78.2660231527659,-43.98538520005968, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

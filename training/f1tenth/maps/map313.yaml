@@ -1,0 +1,6 @@
+image: map313.pgm
+resolution: 0.062500
+origin: [-78.22398651262752,-44.18418934723373, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

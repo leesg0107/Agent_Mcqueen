@@ -1,0 +1,14 @@
+# Stage 1 Agent Configuration for ForzaETH
+/stage1_agent:
+  ros__parameters:
+    # Model path (in docker container)
+    model_path: '/home/misys/overtake_agent/common/models/stage1/f1tenth_ppo_stage1_v1_20251110_133811/f1tenth_ppo_stage1_v1_20251110_133811_final.zip'
+
+    # ROS2 topics (ForzaETH naming)
+    scan_topic: '/scan'
+    odom_topic: '/car_state/odom_GT'
+    drive_topic: '/drive'
+
+    # Observation parameters
+    num_beams: 1080
+    frame_stack: 4

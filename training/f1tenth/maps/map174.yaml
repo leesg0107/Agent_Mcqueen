@@ -1,0 +1,6 @@
+image: map174.pgm
+resolution: 0.062500
+origin: [-78.00371285936181,-44.269071412127346, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

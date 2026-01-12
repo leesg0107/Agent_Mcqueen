@@ -1,0 +1,6 @@
+image: map379.pgm
+resolution: 0.062500
+origin: [-78.0766816845822,-44.08553750724441, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

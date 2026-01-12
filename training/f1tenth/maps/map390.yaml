@@ -1,0 +1,6 @@
+image: map390.pgm
+resolution: 0.062500
+origin: [-78.24315871905982,-44.25923272221634, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196
